@@ -1,0 +1,16 @@
+{
+  "manifest_version": 3,
+  "name": "AI Sentiment",
+  "version": "1.0",
+  "description": "Phân tích cảm xúc bình luận bằng mô hình Bi-LSTM",
+  "action": {
+    "default_popup": "popup.html",
+    "default_title": "Mở AI Sentiment Pro"
+  },
+  "icons": {
+    "128": "icon.png"
+  },
+  "host_permissions": [
+    "http://127.0.0.1/*"
+  ]
+}

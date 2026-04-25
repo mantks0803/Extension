@@ -1,0 +1,38 @@
+<!DOCTYPE html>
+<html lang="vi">
+<head>
+    <meta charset="UTF-8">
+    <title>AI Sentiment Pro</title>
+    <link rel="stylesheet" href="style.css">
+    </head>
+<body>
+    <div class="wrapper">
+        <div class="header">
+            <img src="icon.png" alt="logo" class="logo">
+            <h2>Sentiment Pro</h2>
+        </div>
+
+        <div class="content">
+            <p class="subtitle">Nhập bình luận Shopee/Facebook hoặc đoạn văn bất kì để AI đọc vị cảm xúc.</p>
+            <textarea id="inputText" placeholder="Ví dụ: Sản phẩm ok nhưng giao hàng hơi trễ..."></textarea>
+
+            <button id="checkBtn">
+                <span class="btn-text"> Phân Tích Cảm Xúc</span>
+                <div class="loader" id="loader" style="display:none;"></div>
+            </button>
+
+            <div id="resultCard" class="result-card" style="display:none;">
+                <div class="sentiment-indicator" id="sentimentIcon"></div>
+                <div class="result-body">
+                    <p class="result-label">AI đánh giá:</p>
+                    <p id="resultText" class="result-text"></p>
+                </div>
+            </div>
+        </div>
+
+        <div class="footer">Khô gà mixi</div>
+    </div>
+
+    <script src="popup.js"></script>
+</body>
+</html>
