@@ -315,7 +315,6 @@ basic
 bass
 bast
 bat
-bat đau
 bath
 batman
 battefield
@@ -384,7 +383,6 @@ bimbim_
 bimbim_hơi
 bin
 binh
-binh thuong
 binh đoàn
 bird
 birds
@@ -1318,7 +1316,6 @@ charm_r
 charmbytea
 charn
 chat
-chat luong
 chats
 chau
 chay
@@ -1348,7 +1345,6 @@ chi nhánh
 chi phí
 chi phí vậy
 chi tiết
-chi tra
 chi_phí
 chi_tiết
 chia
@@ -1367,7 +1363,6 @@ chinadữ
 chinch
 chinese
 chinh
-chinh hang
 chinh phục
 chinh_chiến
 chip
@@ -1464,6 +1459,7 @@ chung thân thiện
 chung_bộ
 chung_vãi
 chuong
+chuot
 chup
 chuph
 chut
@@ -2018,7 +2014,6 @@ co
 co dãn
 co giãn
 co giản
-co the
 co_dãn
 co_giãn
 co_nt
@@ -2081,6 +2076,7 @@ computer
 computers
 computerworld
 con
+con chuot
 con cháu
 con con
 con cái
@@ -3859,13 +3855,10 @@ gian_thương
 giang
 giang hồ
 giao
-giao dich
 giao diện
 giao dịch
-giao hang
 giao hủy đơn
 giao lưu
-giao nhanh
 giao nhận
 giao thông
 giao thức
@@ -4356,7 +4349,6 @@ hahaha
 hahha
 hahhaa
 hai
-hai long
 haiz
 haiza
 haizz
@@ -4374,7 +4366,6 @@ handling
 handmade
 hang
 hang ban
-hang gia
 hang nhe
 hang tq
 hang_dung
@@ -5518,7 +5509,6 @@ keo_nến
 kep
 kernel
 ket
-ket thuc
 kets
 keu
 key
@@ -5595,8 +5585,6 @@ khogno
 khoi
 khoing
 khong
-khong the
-khong thich
 khongg
 khoong
 khoá
@@ -5863,7 +5851,6 @@ kich
 kichs_thước
 kids
 kiem
-kiem tra
 kien
 kieng
 kiet
@@ -6239,7 +6226,6 @@ lai
 lai_rai
 laik
 lam
-lam viec
 lamer
 lan
 lan man
@@ -7057,7 +7043,6 @@ ma_u
 maatd
 mabg
 mac
-mac du
 macbook
 machine
 macos
@@ -8508,7 +8493,6 @@ nham_nhở
 nhamua
 nhan
 nhan sắc
-nhan xet
 nhan_co
 nhang
 nhanh
@@ -8573,6 +8557,7 @@ nhi
 nhieeuf
 nhien
 nhiet
+nhiet tinh
 nhiet_tinh
 nhieu
 nhin
@@ -9050,7 +9035,6 @@ non
 non trẻ
 nong
 noo
-nop tien
 nope
 nopij_dung
 nos
@@ -9599,7 +9583,6 @@ patin
 pattern
 pavilion
 pay
-payment
 pb
 pc
 pc vậy
@@ -10762,7 +10745,6 @@ samsung
 samsungsamsung
 samsungsamsung thiết
 san
-san pham
 san_sát
 sanda
 sandadress
@@ -11209,7 +11191,6 @@ stupidman
 style
 stype
 su
-su dung
 sua
 sub
 submit
@@ -11736,7 +11717,6 @@ thanh cao
 thanh lý
 thanh lịch
 thanh niên
-thanh toan
 thanh toán
 thanh tra
 thanh_lịch
@@ -11758,7 +11738,6 @@ thao tác
 thao_tác
 thap
 that
-that vong
 thau
 thay
 thay  vì vậy
@@ -12508,11 +12487,9 @@ tiam
 tiec
 tieenf
 tien
-tien loi
 tien vi
 tieng
 tiep
-tiep tuc
 tiet
 tiger
 tik
@@ -12774,8 +12751,6 @@ tr_ủa
 tra
 tra cứu
 tra hỏi
-tra loi
-tra tien
 tra tấn
 trac
 trace
@@ -13203,7 +13178,6 @@ tu_van
 tuan
 tube
 tuc
-tuc gian
 tue
 tui
 tuii
@@ -13229,7 +13203,6 @@ tuy rằng
 tuy vậy
 tuy_nhiên
 tuyet
-tuyet voi
 tuyp
 tuyê
 tuyêht
@@ -14002,7 +13975,6 @@ unlimited
 unlock
 unpair
 untral
-uong
 up
 update
 update_đc
@@ -14739,8 +14711,6 @@ xanh_riêu
 xanh_rêu
 xao
 xau
-xau xi
-xay
 xbox
 xbox one
 xbxjzjsn
@@ -15614,7 +15584,6 @@ zừa_vị
 đao
 đap
 đat
-đat hang
 đau
 đau khổ
 đau lòng
@@ -15681,6 +15650,7 @@ zừa_vị
 đi_đôi
 đi_đứng
 điem
+đien thoai
 điii
 điiiiiiiiiiiiiiiiiiiiiiiiiiiiiiii
 đin
@@ -15762,7 +15732,6 @@ zừa_vị
 đoi
 đom
 đong
-đong goi
 đou
 đoàng
 đoàng_hoàng

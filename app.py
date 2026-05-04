@@ -6,10 +6,10 @@ import re
 import unicodedata
 import emoji
 import os
+import spacy
 
 app = Flask(__name__)
 CORS(app)
-
 
 
 class MyVocab():
@@ -36,6 +36,7 @@ class MyVocab():
 class DataPreprocess():
     def __init__(self, stopwords, tokenizer, emoji_labels):
         self.stopwords = stopwords
+        self.tokenizer = tokenizer          # tokenizer là spacy pipeline
         self.emoji_labels = emoji_labels
         self.__emoji_sorted = sorted(self.emoji_labels.keys(), key=len, reverse=True)
         self.__emoji_regex = "|".join(re.escape(k) for k in self.__emoji_sorted)
@@ -60,8 +61,6 @@ class DataPreprocess():
             text = text.replace(f"__PLACEHOLDER{i}__", ph)
 
         tokens = self.tokenize(text)
-
-
         return tokens
 
     def __repl(self, match: str):
@@ -72,8 +71,8 @@ class DataPreprocess():
         return self.__pattern.sub(self.__repl, text)
 
     def tokenize(self, text: str) -> list:
-        # Dùng split đơn giản để khớp với cách build vocab lúc train
-        tokens = text.split()
+        # Dùng spacy để tách từ giống như lúc train
+        tokens = [token.text for token in self.tokenizer(text)]
         cleaned_token = []
         for token in tokens:
             if re.match(r'^\s*$', token):
@@ -92,7 +91,6 @@ class DataPreprocess():
             else:
                 cleaned_token.append(token)
         return cleaned_token
-
 
 
 class VSFCClassifier(nn.Module):
@@ -114,8 +112,8 @@ class VSFCClassifier(nn.Module):
             input_size=64,
             hidden_size=hidden_dim,
             batch_first=True,
-            bidirectional=True,
-            dropout=0.5
+            bidirectional=True
+            # dropout=0.5
         )
 
         self.attn = nn.Linear(in_features=hidden_dim * 2, out_features=1)
@@ -124,20 +122,15 @@ class VSFCClassifier(nn.Module):
     def forward(self, input_ids):
         x = self.embedding(input_ids)
         x = x.permute(0, 2, 1)
-
         c = self.conv(x)
         c = self.relu(c)
         c = self.pool(c)
         c = c.permute(0, 2, 1)
-
         enc_out, _ = self.encoder(c)
-
         attn_weights = torch.softmax(self.attn(enc_out), dim=1)
         pooled = torch.sum(enc_out * attn_weights, dim=1)
-
         sentiment_logits = self.sentiment_head(pooled)
         return sentiment_logits
-
 
 
 device = torch.device('cuda' if torch.cuda.is_available() else 'cpu')
@@ -152,15 +145,18 @@ emoji_labels = {
     ':@': 'colondoublesurprise', 'v.v': 'vdotv', '...': 'dotdotdot', '/': 'fraction', 'c#': 'cshrap'
 }
 
-# Khởi tạo bộ tiền xử lý và từ điển
-preprocess = DataPreprocess(stopwords=[], tokenizer=None, emoji_labels=emoji_labels)
-vocab = MyVocab()
+nlp = spacy.blank('vi')
 
+preprocess = DataPreprocess(stopwords=[], tokenizer=nlp, emoji_labels=emoji_labels)
+
+# Tải từ điển
+vocab = MyVocab()
 try:
     vocab.load_vocab('vocab.txt')
     print(f"[*] Đã tải thành công từ điển với {vocab.vocab_size} từ.")
 except Exception as e:
     print("[!] Lỗi: Không tìm thấy file 'vocab.txt'. Hãy đảm bảo file nằm cùng thư mục.")
+    exit(1)
 
 # Khởi tạo mô hình
 pad_idx = vocab.word2idx.get("<PAD>", 0)
@@ -177,7 +173,7 @@ try:
     print("[*] Não bộ AI 'vsfc_model.pth' đã được kích hoạt thành công!")
 except Exception as e:
     print(f"[!] Lỗi nạp Model: {e}")
-
+    exit(1)
 
 
 @app.route('/predict', methods=['POST'])
@@ -188,7 +184,7 @@ def predict():
 
     text = data['text']
 
-    # Ép chữ thành số
+    # Tiền xử lý và mapping
     tokens = preprocess.process(text)
     token_ids = vocab.mapping(tokens)
 
@@ -198,7 +194,6 @@ def predict():
 
     input_tensor = torch.tensor([token_ids], dtype=torch.long).to(device)
 
-    # Dự đoán
     with torch.no_grad():
         logits = model(input_tensor)
         pred = logits.argmax(dim=1).item()
@@ -209,7 +204,7 @@ def predict():
 
     return jsonify({
         'result': labels[pred],
-        'tokens': tokens  # Gửi kèm cho frontend thấy AI đã đọc những từ gì
+        'tokens': tokens
     })
 
 
